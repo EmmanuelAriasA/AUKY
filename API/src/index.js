@@ -1,9 +1,6 @@
-import express from "express";
+import app from "./app.js";
+import { PORT } from "./config.js";
 
-const app = express();
-
-const port = 4000;
-
-app.listen(port, () => {
-    console.log("App start in port: ", port);
-});
+// Iniciar servidor
+app.listen(PORT);
+console.log("Server on port ", { PORT });
