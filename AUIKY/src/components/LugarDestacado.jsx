@@ -1,12 +1,10 @@
-// src/LugarDestacado.js
-
 import React, { useState } from 'react';
 import Slider from "react-slick";
 
-function Carrusel({imagenes}) {
+function Carrusel({ imagenes }) {
   const images = [imagenes];
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   const settings = {
     dots: true,
     infinite: true,
@@ -15,21 +13,21 @@ function Carrusel({imagenes}) {
     slidesToScroll: 1
   };
 
-   const nextSlide = () => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-   };
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
 
-   const prevSlide = () => {
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-   };
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
 
   return (
     <div>
       <Slider {...settings}>
-      <button onClick={prevSlide}>Anterior</button>
-         <img src={images[currentIndex]} alt={`Imagen ${currentIndex + 1}`} />
-         <button onClick={nextSlide}>Siguiente</button>
-    </Slider>
+        <button onClick={prevSlide}>Anterior</button>
+        <img src={images[currentIndex]} alt={`Imagen ${currentIndex + 1}`} />
+        <button onClick={nextSlide}>Siguiente</button>
+      </Slider>
     </div>
   );
 }

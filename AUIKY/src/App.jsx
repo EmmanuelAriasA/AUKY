@@ -19,14 +19,14 @@ function App() {
   };
   return (
     <>
-      <div>
+      <div className='container'>
         <SearchBar onSearch={handleSearch} />
         <ul>
           {searchResults.map(result => (
             <li key={result}>{result}</li>
           ))}
         </ul>
-        <LugarDestacado imagenes={images} />
+        {/* <LugarDestacado imagenes={images} /> */}
       </div>
     </>
   )
