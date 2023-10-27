@@ -8,7 +8,7 @@ import {
 
 const router = Router();
 
-router.get("/", getLugares);
+router.get("/lugares", getLugares);
 router.get("/destacados", getLugaresByDestacado);
 router.get("/getLuagresById/:id", getLugaresById);
 

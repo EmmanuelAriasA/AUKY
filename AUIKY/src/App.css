@@ -1,2 +1,60 @@
-/* @import "~slick-carousel/slick/slick.css"; 
-@import "~slick-carousel/slick/slick-theme.css"; */
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+body {
+  background-color: #00002e;
+}
+
+header {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: .3fr 2fr;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 100%;
+}
+
+.slick-track {
+  display: flex;
+  align-items: center;
+  max-height: 25rem;
+  overflow: hidden;
+}
+
+.lugares {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.lugar {
+  border: 1px solid white;
+  text-align: center;
+  border-radius: .5rem;
+}
+
+.lugar h2{
+  font-weight: 700;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+}
+
+.lugar img {
+  max-height: 15rem;
+}
+
+.lugar p {
+  margin-top: .5rem;
+  color: gray;
+}
+
+a{
+  text-decoration: none;
+}

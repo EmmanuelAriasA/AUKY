@@ -1,12 +1,13 @@
 import React from 'react';
 
-const DetalleLugar = ({ name, address, hours, rating }) => {
+const DetalleLugar = ({ Data }) => {
+  const { Nombre, Horario, Calificaciones } = Data;
   return (
     <div className="especificaciones">
-      <h2>{name}</h2>
-      <p><strong>Dirección:</strong> {address}</p>
-      <p><strong>Horario:</strong> {hours}</p>
-      <p><strong>Calificación:</strong> {rating}</p>
+      <h2>{Nombre}</h2>
+      {/* <p><strong>Dirección:</strong> {address}</p> */}
+      <p><strong>Horario:</strong> {Horario}</p>
+      <p><strong>Calificación:</strong> {Calificaciones}</p>
     </div>
   );
 };

@@ -1,32 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
 
-function Carrusel({ imagenes }) {
-  const images = [imagenes];
-  const [currentIndex, setCurrentIndex] = useState(0);
+function Carrusel() {
+  const [destacados, setDestacados] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:4000/destacados')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('La solicitud no pudo completarse.');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // console.log(data); 
+        setDestacados(data)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
-
   return (
     <div>
       <Slider {...settings}>
-        <button onClick={prevSlide}>Anterior</button>
-        <img src={images[currentIndex]} alt={`Imagen ${currentIndex + 1}`} />
-        <button onClick={nextSlide}>Siguiente</button>
+        {destacados.map((destacado, index) => (
+          <img key={index} src={destacado.Imagen} alt="" />
+        ))}
       </Slider>
     </div>
   );

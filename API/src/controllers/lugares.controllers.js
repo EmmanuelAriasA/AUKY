@@ -30,6 +30,7 @@ export const getLugaresById = async (req, res) => {
     if (rows.length === 0) {
       res.json({ message: "No hay lugares con ese id" });
     }
+    res.json(rows[0]);
   } catch (error) {
     handleErrors(res, error);
   }
