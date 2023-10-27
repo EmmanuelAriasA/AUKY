@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "../SearchBar.css";
 
 function SearchBar({ onSearch }) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -13,15 +14,20 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        placeholder="Buscar..."
-      />
-      <button type="submit">Buscar</button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          className="search-input"
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          placeholder="Buscar..."
+        />
+        <button className="search-button" type="submit">
+          Buscar
+        </button>
+      </form>
+    </>
   );
 }
 
