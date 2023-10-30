@@ -1,0 +1,108 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #ffffff;
+}
+
+.horizontal-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+tr {
+  height: 50px;
+}
+
+td {
+  width: 20%;
+  padding: 20px;
+  text-align: center;
+}
+
+body {
+  background-color: #00002e;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+h1 {
+  color: #ffffff;
+}
+
+.a {
+  background-color: #015F98;
+}
+
+.b {
+  background-color: #00B7BC;
+}
+
+.c {
+  background-color: #FEA422;
+}
+
+.d {
+  background-color: #FF1C5D;
+}
+
+.e {
+  background-color: #00002e;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 10px;
+  background-color: #00002e;
+  color: #ffffff;
+}
+
+.logo-auiky {
+  width: 100px;
+}
+
+.footer-logo {
+  float: left;
+}
+
+.footer-logo-left {
+  float: left;
+}
+
+.footer p {
+  text-align: right;
+}
+
+.place-image {
+  max-width: 50%;
+  display: block;
+  margin: 0 auto;
+}
