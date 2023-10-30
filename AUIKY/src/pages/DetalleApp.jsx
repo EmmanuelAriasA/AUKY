@@ -26,7 +26,6 @@ function DetalleApp() {
 
   return (
     <div className="App">
-      <h1>Detalles del Lugar</h1>
       <DetalleLugar Data={placeData} />
     </div>
   );
