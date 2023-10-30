@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/DetalleApp.css';
+import '../styles/DetalleLugar.css';
 import AUIKY from '../assets/LOGO AUIKY.png';
 
 const DetalleLugar = ({ Data }) => {
