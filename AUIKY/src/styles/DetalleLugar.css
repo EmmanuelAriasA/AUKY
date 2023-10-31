@@ -12,10 +12,12 @@
 }
 
 .grid {
+  margin-top: 10px;
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 h1 {
@@ -45,7 +47,7 @@ body {
 }
 
 .App {
-  padding:0%;
+  padding: 0%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,24 +105,30 @@ h1 {
 }
 
 .place-image {
-  max-width: 50%;
+  max-width: 60%;
   display: block;
   margin: 0 auto;
 }
 
+.grid {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
 @media (max-width: 768px) {
-  tr {
-    height: auto;
-    font-size: 14px;
+  .grid {
+    display: block;
   }
 
-  td {
+  .a,
+  .b,
+  .c,
+  .d,
+  .e {
     width: 100%;
-    padding: 10px;
-    text-align: left;
-  }
-
-  .place-image {
-    max-width: 100%;
   }
 }
