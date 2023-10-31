@@ -25,7 +25,10 @@ function Carrusel() {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true,         
+    autoplaySpeed: 3000,    
+    dots: false
   };
 
   return (
@@ -35,7 +38,7 @@ function Carrusel() {
           <img key={index} src={destacado.Imagen} alt="" />
         ))}
       </Slider>
-    </div>
+      </div>
   );
 }
 

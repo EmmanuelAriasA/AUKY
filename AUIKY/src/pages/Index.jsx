@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from '../assets/LOGO AUIKY.png';
 import SearchBar from '../components/SearchBar';
 import LugarDestacado from '../components/LugarDestacado';
+
 function Index() {
     const [data, setData] = useState([]);
     useEffect(() => {

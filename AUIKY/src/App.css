@@ -34,20 +34,36 @@ img {
   gap: 2rem;
 }
 
+@media(max-width: 768px){
+  .lugares{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media(max-width: 460px){
+  .lugares{
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 .lugar {
   border: 1px solid white;
   text-align: center;
   border-radius: .5rem;
+  height: 100%;
 }
 
 .lugar h2{
-  font-weight: 700;
+  font-weight: 800;
   margin-top: .5rem;
   margin-bottom: 1rem;
+  font-family: sans-serif;
+  font-style: normal;
 }
 
 .lugar img {
-  max-height: 15rem;
+  /* max-height: 15rem; */
+  height: 10rem;
+
 }
 
 .lugar p {
