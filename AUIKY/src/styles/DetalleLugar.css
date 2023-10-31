@@ -106,3 +106,20 @@ h1 {
   display: block;
   margin: 0 auto;
 }
+
+@media (max-width: 768px) {
+  tr {
+    height: auto;
+    font-size: 14px;
+  }
+
+  td {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .place-image {
+    max-width: 100%;
+  }
+}
