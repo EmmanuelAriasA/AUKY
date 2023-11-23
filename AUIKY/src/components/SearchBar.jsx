@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Searchbar.css";
+import { Link } from "react-router-dom";
 
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
@@ -23,9 +24,12 @@ function SearchBar({ onSearch }) {
           onChange={handleInputChange}
           placeholder="Buscar..."
         />
-        <button className="search-button" type="submit">
-          Buscar
-        </button>
+        
+          <button className="search-button" type="submit">
+            Buscar
+          </button>
+        
+
       </form>
     </>
   );
