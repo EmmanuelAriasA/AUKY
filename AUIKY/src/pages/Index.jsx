@@ -1,12 +1,16 @@
-import React from "react";
-import { useState, useEffect } from 'react';
+// Importa React y otros módulos necesarios
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Logo from '../assets/LOGO AUIKY.png';
 import SearchBar from '../components/SearchBar';
-import LugarDestacado from '../components/LugarDestacado';
+import Logo from '../assets/LOGO AUIKY.png';
+import "../styles/Filter.css";
+import LugarDestacado from "../components/LugarDestacado"
+
 
 function Index() {
+
     const [data, setData] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:4000/lugares')
             .then((response) => {
@@ -16,7 +20,6 @@ function Index() {
                 return response.json();
             })
             .then((data) => {
-                // console.log(data);
                 setData(data);
             })
             .catch((error) => {
@@ -25,43 +28,95 @@ function Index() {
     }, []);
 
     const [searchResults, setSearchResults] = useState([]);
+    const [selectedCategories, setSelectedCategories] = useState([]);
 
-    const handleSearch = (query) => {
-        // Aquí puedes llamar a una API, filtrar datos locales, etc.
-        // Por simplicidad, supongamos que tienes un array de datos y filtrarás por coincidencia:
-        const data = ['item1', 'item2', 'item3', 'item4'];
-        const results = data.filter(item => item.includes(query));
+    const specificCategories = ["Café", "Monumento", "Atracción", "Restaurante", "Bar", "Familiar", "Petfriendly"];
+
+    const filterByCategories = (lugar) => {
+        if (selectedCategories.length === 0) {
+            return true;
+        } else {
+            return selectedCategories.some(category => lugar.Etiqueta.includes(category));
+        }
+    };
+
+    const handleCheckboxChange = (category) => {
+
+        if (selectedCategories.includes(category)) {
+            const updatedCategories = selectedCategories.filter(cat => cat !== category);
+            setSelectedCategories(updatedCategories);
+            updateSearchResults(updatedCategories);
+        } else {
+            const updatedCategories = [...selectedCategories, category];
+            setSelectedCategories(updatedCategories);
+            updateSearchResults(updatedCategories);
+        }
+    };
+
+    const updateSearchResults = (categories) => {
+        const results = data.filter(
+            (lugar) =>
+                categories.length === 0 ||
+                categories.some(category => lugar.Etiqueta.includes(category))
+        );
         setSearchResults(results);
     };
+
+    const handleSearch = (query) => {
+        const results = data.filter(
+            (lugar) =>
+                (lugar.Etiqueta.toLowerCase().includes(query.toLowerCase()) ||
+                    lugar.Nombre.toLowerCase().includes(query.toLowerCase())) &&
+                filterByCategories(lugar)
+        );
+        setSearchResults(results);
+    };
+
+    const handleSearchInputChange = (query) => {
+        handleSearch(query);
+    };
+
+    const lugaresToDisplay = searchResults.length > 0 ? searchResults : data;
+
     return (
         <>
-            <header className='container'>
+            <header className="container">
                 <img src={Logo} alt="Logo" />
                 <div>
-                    <SearchBar onSearch={handleSearch} />
-                    {/* <ul>
-                        {searchResults.map(result => (
-                            <li key={result}>{result}</li>
-                        ))}
-                    </ul> */}
+                    <SearchBar onSearch={handleSearchInputChange} />
+                    <div className="categories-container">
+                        <div className="categories-checkboxes">
+                            {specificCategories.map((category) => (
+                                <div key={category} className="category-checkbox">
+                                    <input
+                                        type="checkbox"
+                                        id={category}
+                                        checked={selectedCategories.includes(category)}
+                                        onChange={() => handleCheckboxChange(category)}
+                                    />
+                                    <label htmlFor={category}>{category}</label>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </header>
             <div className="container">
                 <LugarDestacado />
-                <div className='lugares'>
-                    {data.map((lugar, index) => (
-                        <Link to={`/detalles/${lugar.ID}`} key={lugar.ID}>
-                            <div className='lugar'>
-                                {/* <div className='container'> */}
+                <div className="lugares mt-4">
+                    {lugaresToDisplay.map((lugar, index) => (
+                        <Link
+                            to={`/detalles/${lugar.ID}`}
+                            key={lugar.ID}
+                        >
+                            <div className="lugar">
                                 <h2>{lugar.Nombre}</h2>
-                                <img src={lugar.Imagen} alt="Imagen" className='lugar-img' />
+                                <img src={lugar.Imagen} alt="Imagen" className="lugar-img" />
                                 <p>{lugar.Descripcion}</p>
-                                {/* </div> */}
                             </div>
                         </Link>
                     ))}
                 </div>
-
             </div>
         </>
     );
